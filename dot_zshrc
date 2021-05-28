@@ -83,9 +83,11 @@ fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 #Exports
+
+# custom scripts
+export PATH=$PATH:~/bin
 export XDG_USER_CONFIG_DIR=~/.config
 export BROWSER='google-chrome-stable'
-export PATH=$PATH:~/scripts/bin
 RANGER_LOAD_DEFAULT_RC=FALSE
 
 # You may need to manually set your language environment
