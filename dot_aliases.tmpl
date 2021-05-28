@@ -1,0 +1,20 @@
+# global aliases
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias vi='vim'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias xclip="xclip -selection c"
+alias chezmoi='/snap/chezmoi/current/chezmoi'
+
+{{- if eq .chezmoi.group "ecr"}}
+# asrc server aliases
+alias dv='cd /asrc/ecr/danielv'
+{{- end }}
+
+{{- if eq .chezmoi.hostname "dan-PC" }}
+# local pc only aliases
+alias spt='spotifyd;spt'
+alias i3conf='vim ~/.config/i3/config'
+alias bsconf='vim ~/.config/bspwm/bspwmrc'
+alias aur='cd ~/Downloads/aur'
+alias wm_class='xprop |awk "/WM_CLASS/{print $4}"'
+{{- end }}
