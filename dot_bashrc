@@ -1,0 +1,23 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+# aliases
+if [ -f ~/.aliases ]; then
+	. ~/.aliases
+fi
+
+# wal colorscheme
+if [[ -d "~/.cache/wal" ]]
+then
+    (cat ~/.cache/wal/sequences &)
+fi
+
+#Path
+export XDG_USER_CONFIG_DIR=~/.config
+export PATH=$PATH:~/scripts/bin
