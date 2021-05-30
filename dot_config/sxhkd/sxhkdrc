@@ -32,6 +32,7 @@ mod4 + d
 
 mod4 + shift + d
     dmenu_run
+#-nb "$color7" -nf "$color0" -sb "$color0" -sf "$color7"
 
 # power menu
 #super + p
@@ -61,11 +62,11 @@ XF86MonBrightnessDown
 
 # volume up for active sink
 XF86AudioRaiseVolume
-    /home/dan/scripts/bin/volumectl up
+    ~/bin/volumectl up
 
 # volume down for active sink
 XF86AudioLowerVolume
-    /home/dan/scripts/bin/volumectl down
+    ~/bin/volumectl down
 
 # mute toggle for active sink
 XF86AudioMute

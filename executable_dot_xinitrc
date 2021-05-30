@@ -3,12 +3,16 @@
 # invoke global X session script
 #. /etc/X11/Xsession
 
-# Simple X Hotkey Daemon
-sxhkd &
-
 # monitor layout and wallpaper
 ~/.screenlayout/danpc.sh 
 nitrogen --restore
+
+# pywal 
+[ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
+. ~/.cache/wal/colors.sh
+
+# compositor
+picom -b 
 
 # Xresources
 xrdb -merge -I$HOME ~/.Xresources
@@ -18,6 +22,9 @@ xmodmap -e 'remove mod1 = Alt_L'
 xmodmap -e 'remove mod4 = Super_L'
 xmodmap -e 'add mod1 = Super_L'
 xmodmap -e 'add mod4 = Alt_L'
+
+# Simple X Hotkey Daemon
+sxhkd &
 
 # launch i3 wrapped in dbus to ensure DBus envi variables set 
 # see playerctl github readme 

@@ -7,7 +7,55 @@ primary = ${xrdb:color6:#fe8019}
 secondary = ${xrdb:color1:#b16286}
 alert = ${xrdb:color5:#fb4934}
 
-[bar/default]
+[bar/dan-PC-main]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 25
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 3
+line-color = ${colors.primary}
+border-color = #00000000
+padding-left = 3
+padding-right = 3
+module-margin-left = 0
+module-margin-right = 2
+font-0 = JetBrains Mono Nerd Font:pixelsize=9
+modules-left = i3 xwindow
+modules-center = 
+modules-right =  pulseaudio wireless-network date
+tray-position = right
+tray-padding = 4
+wm-restack = i3
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/dan-PC-secondary]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 25
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 3
+line-color = ${colors.primary}
+border-color = #00000000
+padding-left = 3
+padding-right = 3
+module-margin-left = 0
+module-margin-right = 2
+font-0 = JetBrains Mono Nerd Font:pixelsize=9
+modules-left = i3
+modules-center = 
+modules-right = 
+tray-position = right
+tray-padding = 4
+wm-restack = i3
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/laptop]
 width = 100%
 height = 35
 fixed-center = false
@@ -22,8 +70,8 @@ module-margin-left = 0
 module-margin-right = 2
 font-0 = JetBrains Mono Nerd Font:pixelsize=9
 modules-left = bspwm xwindow
-modules-center = 
-modules-right =  backlight pulseaudio battery1 battery0 bluetooth updates-pacman-aurhelper work-vpn-status wireless-network 
+modules-center =
+modules-right =  backlight pulseaudio battery1 battery0 bluetooth updates-pacman-aurhelper work-vpn-status wireless-network
 tray-position = right
 tray-padding = 4
 wm-restack = bspwm
@@ -32,16 +80,21 @@ cursor-scroll = ns-resize
 
 [module/wireless-network]
 type = internal/network
+{{- if eq .chezmoi.hostname "dan-PC" }}
+interface=wlp5s0
+label-connected = %local_ip% %upspeed% up %downspeed% down
+{{- else if eq .chezmoi.hostname "dan-t400" }}
 interface=wlp3s0
+label-connected = %local_ip% 
+{{- end }}
 interval = 5.0
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-connected = %local_ip%
 label-disconnected = 睊
 
 [module/updates-pacman-aurhelper]
 type = custom/script
-exec = ~/scripts/bin/updates-pacman-aurhelper.sh
+exec = ~/bin/updates-pacman-aurhelper.sh
 interval = 600
 
 [module/xwindow]
@@ -59,6 +112,32 @@ label-mounted = %free%
 label-unmounted = not mounted
 format-mounted-prefix = "/: "
 ;format-mounted-prefix-foreground = ${colors.alert}
+
+[module/i3]
+type = internal/i3
+; Only show workspaces defined on the same output as the bar
+; Default: false
+pin-workspaces = true
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-foreground= ${colors.secondary}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+label-occupied = %index%
+label-occupied-padding = 2
+label-urgent = %index%!
+label-urgent-background = ${colors.foreground-alt}
+label-urgent-padding = 2
+label-empty = %index%
+;label-occupied-background = ${colors.background-alt}
+label-occupied-underline= ${colors.primary}
+label-empty-padding = 2
 
 [module/bspwm]
 type = internal/bspwm

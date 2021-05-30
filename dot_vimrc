@@ -57,3 +57,6 @@ let mapleader = "\<Space>"
 " toggle nerdtree
 map <C-n> :NERDTreeToggle<CR>
 map <leader>D :r!date<CR>
+
+" chezmoi auto apply
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %

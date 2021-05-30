@@ -13,11 +13,14 @@ if [ -f ~/.aliases ]; then
 fi
 
 # wal colorscheme
-if [[ -d "~/.cache/wal" ]]
+if [[ -d ~/.cache/wal ]]
 then
     (cat ~/.cache/wal/sequences &)
+    source ~/.cache/wal/colors.sh
 fi
-
-#Path
+# Environment Vars
 export XDG_USER_CONFIG_DIR=~/.config
-export PATH=$PATH:~/scripts/bin
+export PATH=$PATH:~/bin:~/.local/bin
+
+# Source 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
