@@ -22,7 +22,7 @@ padding-right = 3
 module-margin-left = 0
 module-margin-right = 2
 font-0 = JetBrains Mono Nerd Font:pixelsize=9
-modules-left = i3 xwindow
+modules-left = i3 xwindow dan-pc-fs
 modules-center = 
 modules-right =  pulseaudio wireless-network date
 tray-position = right
@@ -100,6 +100,19 @@ interval = 600
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+
+
+[module/dan-pc-fs]
+type = internal/fs
+interval = 25
+mount-0 = /
+mount-1 = /home
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+label-mounted = %mountpoint% %used%/%total%
+label-unmounted = not mounted
+format-mounted-prefix = ""
+;format-mounted-prefix-foreground = ${colors.alert}
 
 [module/filesystem]
 type = internal/fs
@@ -192,7 +205,7 @@ date-alt = " %a %d.%m.%Y"
 time = %H:%M
 time-alt = %H:%M:%S
 format-prefix = " "
-format-prefix-foreground = ${colors.alert}
+format-prefix-foreground = ${colors.primary}
 label = %date% - %time%
 
 [module/pulseaudio]

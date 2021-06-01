@@ -70,7 +70,7 @@ XF86AudioLowerVolume
 
 # mute toggle for active sink
 XF86AudioMute
-    /home/dan/scripts/bin/volumectl mute
+    ~/bin/volumectl mute
 
 # mic mute toggle
 XF86AudioMicMute 

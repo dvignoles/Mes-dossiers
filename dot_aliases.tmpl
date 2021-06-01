@@ -3,17 +3,25 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vi='vim'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias xclip="xclip -selection c"
-
+alias cheat='cht.sh'
+alias spt='spotifyd;spt'
 {{- if eq .chezmoi.group "ecr"}}
 # asrc server aliases
 alias dv='cd /asrc/ecr/danielv'
 {{- end }}
-
 {{- if eq .chezmoi.hostname "dan-PC" }}
 # local pc only aliases
-alias spt='spotifyd;spt'
 alias i3conf='vim ~/.config/i3/config'
 alias bsconf='vim ~/.config/bspwm/bspwmrc'
 alias aur='cd ~/Downloads/aur'
 alias wm_class='xprop |awk "/WM_CLASS/{print $4}"'
+# work vpn
+# https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux/use-the-globalprotect-app-for-linux.html
+alias gpc='globalprotect connect --portal rmasrc.gc.cuny.edu'
+alias gpd='globalprotect disconnect'
+alias gpr='globalprotect rediscover-network'
+alias gps='globalprotect show --status'
+alias gpi='globalprotect show --details'
+alias gpe='globalprotect show --error'
+alias gplog='globalprotect collect-log'
 {{- end }}
