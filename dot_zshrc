@@ -85,6 +85,8 @@ fi
 
 plugins=(colorize django pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
+bindkey '^ ' autosuggest-accept
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
