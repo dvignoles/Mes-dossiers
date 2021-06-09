@@ -109,6 +109,7 @@ bind-key t next-window
 bind-key T previous-window
 
 # Status Bar
+set-option -g status-position top
 set-option -g status-interval 1
 set-option -g status-style bg=black
 set-option -g status-style fg=white
@@ -121,6 +122,8 @@ set-option -g pane-border-style fg=cyan
 # Disable all keybinds (for nesting tmux clients over ssh)
 # See https://www.freecodecamp.org/news/tmux-in-practice-local-and-nested-remote-tmux-sessions-4f7ba5db8795/
 # TODO deal with status bars for remote vs local
+if-shell 'test -n "$SSH_CLIENT"' \
+        'source-file ~/.tmux.remote.conf'
 
 bind -T root F12  \
     set prefix None \;\
@@ -132,5 +135,4 @@ bind -T off F12 \
   set -u prefix \;\
   set -u key-table \;\
   refresh-client -S
-
 
