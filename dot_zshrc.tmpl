@@ -83,21 +83,53 @@ if [ ! -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ] ; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi 
 
-plugins=(colorize django pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
-
-bindkey '^ ' autosuggest-accept
+plugins=(colorize django pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# USER CONFIGURATION
 
-# wal colorscheme
-if [[ -d ~/.cache/wal ]]
-then
-    (cat ~/.cache/wal/sequences &)
-    source ~/.cache/wal/colors.sh
-fi
+# Binds
+bindkey '^ ' autosuggest-accept
 
+# Plugin & Terminal app config
+RANGER_LOAD_DEFAULT_RC=FALSE
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+# HELPER FUNCTIONS
+
+# remove ".<ext>" from filename (not path)
+filename_noext() {
+    echo "$1" | cut -f 1 -d '.'
+}
+
+# generate sequence of numbers all zero padded
+padded_range() {
+    seq -f "%0$3g" $1 $2 
+}
+
+# Time zsh load 
+#https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load.html#how-to-test-your-shell-load-time
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+timezshplugins() {
+    for plugin ($plugins); do
+        timer=$(python -c 'from time import time; print int(round(time() * 1000))')
+        if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
+            source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
+        elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+            source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+        fi
+        now=$(python -c 'from time import time; print int(round(time() * 1000))')
+        elapsed=$(($now-$timer))
+        echo $elapsed":" $plugin
+    done
+}
 # export MANPATH="/usr/local/man:$MANPATH"
 
 #Exports
@@ -106,7 +138,6 @@ fi
 export PATH=$PATH:~/bin:~/.local/bin
 export XDG_USER_CONFIG_DIR=~/.config
 export BROWSER='google-chrome-stable'
-RANGER_LOAD_DEFAULT_RC=FALSE
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -125,33 +156,29 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-#
+
 if [ -f ~/.aliases ]; then
 	. ~/.aliases
 fi
 
-# Helper Functions
-
-# remove ".<ext>" from filename (not path)
-filename_noext() {
-    echo "$1" | cut -f 1 -d '.'
-}
-
-# generate sequence of numbers all zero padded
-padded_range() {
-    seq -f "%0$3g" $1 $2 
-}
-
-# source fzf if installed
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# COMPLETIONS
 
 # cheat.sh completions
 if [ ! -f ~/.zsh.d/_cht ]; then
     [ -d ~/.zsh.d ] || mkdir ~/.zsh.d
     curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
 fi 
-fpath=(~/.zsh.d/ $fpath)
+
+if [[ -d ~/.zsh.d ]]; then
+    fpath=(~/.zsh.d/ $fpath)
+fi
+
+# wal colorscheme
+if [[ -d ~/.cache/wal ]]
+then
+    (cat ~/.cache/wal/sequences &)
+    source ~/.cache/wal/colors.sh
+fi
 
 # >>> conda initialize >>>
 {{- if eq .chezmoi.hostname "dan-PC" }}
