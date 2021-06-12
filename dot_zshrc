@@ -83,13 +83,19 @@ if [ ! -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ] ; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi 
 
-plugins=(colorize django pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
-
-bindkey '^ ' autosuggest-accept
+plugins=(colorize django pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Binds
+bindkey '^ ' autosuggest-accept
+
+# Plugin & Terminal app config
+RANGER_LOAD_DEFAULT_RC=FALSE
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
 
 # wal colorscheme
 if [[ -d ~/.cache/wal ]]
@@ -106,7 +112,6 @@ fi
 export PATH=$PATH:~/bin:~/.local/bin
 export XDG_USER_CONFIG_DIR=~/.config
 export BROWSER='google-chrome-stable'
-RANGER_LOAD_DEFAULT_RC=FALSE
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
