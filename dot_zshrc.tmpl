@@ -109,13 +109,6 @@ padded_range() {
     seq -f "%0$3g" $1 $2 
 }
 
-# wal colorscheme
-if [[ -d ~/.cache/wal ]]
-then
-    (cat ~/.cache/wal/sequences &)
-    source ~/.cache/wal/colors.sh
-fi
-
 # Time zsh load 
 #https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load.html#how-to-test-your-shell-load-time
 
@@ -168,12 +161,24 @@ if [ -f ~/.aliases ]; then
 	. ~/.aliases
 fi
 
+# COMPLETIONS
+
 # cheat.sh completions
 if [ ! -f ~/.zsh.d/_cht ]; then
     [ -d ~/.zsh.d ] || mkdir ~/.zsh.d
     curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
 fi 
-fpath=(~/.zsh.d/ $fpath)
+
+if [[ -d ~/.zsh.d ]]; then
+    fpath=(~/.zsh.d/ $fpath)
+fi
+
+# wal colorscheme
+if [[ -d ~/.cache/wal ]]
+then
+    (cat ~/.cache/wal/sequences &)
+    source ~/.cache/wal/colors.sh
+fi
 
 # >>> conda initialize >>>
 {{- if eq .chezmoi.hostname "dan-PC" }}
