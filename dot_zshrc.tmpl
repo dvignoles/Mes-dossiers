@@ -177,6 +177,13 @@ else
     export PATH="$HOME/anaconda3/bin:$PATH"
 fi
 
+# RGIS installation 
+
+if [ -d "/usr/local/share/ghaas" ]; then
+    export GHAASDIR="/usr/local/share/ghaas"
+    export PATH="$PATH:/usr/local/share/ghaas/bin"
+fi 
+
 {{- end}}
 # <<< conda initialize <<<
 # remove user@hostname when logged in as self on local machine
