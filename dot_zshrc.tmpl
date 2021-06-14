@@ -136,11 +136,6 @@ timezshplugins() {
     done
 }
 # export MANPATH="/usr/local/man:$MANPATH"
-
-#Exports
-
-# custom scripts
-export PATH=$PATH:~/bin:~/.local/bin
 export XDG_USER_CONFIG_DIR=~/.config
 export BROWSER='google-chrome-stable'
 
@@ -209,12 +204,6 @@ else
     export PATH="$HOME/anaconda3/bin:$PATH"
 fi
 
-# RGIS installation 
-
-if [ -d "/usr/local/share/ghaas" ]; then
-    export GHAASDIR="/usr/local/share/ghaas"
-    export PATH="$PATH:/usr/local/share/ghaas/bin"
-fi 
 
 {{- end}}
 # <<< conda initialize <<<

@@ -12,3 +12,22 @@ export GEOSERVER="$DV/geoserver"
 export GEOSERVERVOL="$DV/geoserver_volumes"
 export SCRATCH="/scratch/danielv"
 {{- end }}
+
+# PATH
+if [[ -d ~/.cargo/bin ]]; then
+    export PATH=$PATH:~/.cargo/bin
+fi
+
+if [[ -d ~/bin ]]; then
+    export PATH=$PATH:~/bin
+fi
+
+if [[ -d ~/.local/bin ]]; then
+    export PATH=$PATH:~/.local/bin
+fi
+
+# RGIS installation 
+if [[ -d "/usr/local/share/ghaas" ]]; then
+    export GHAASDIR="/usr/local/share/ghaas"
+    export PATH="$PATH:/usr/local/share/ghaas/bin"
+fi 
