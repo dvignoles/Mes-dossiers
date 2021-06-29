@@ -107,6 +107,10 @@ bind-key c new-window
 bind-key t next-window
 bind-key T previous-window
 
+# toggle synchronize panes <prefix>Ctrl+s 
+# when toggled on, will type in all windows on pane
+bind C-s set-window-option synchronize-panes
+
 # Status Bar
 set-option -g status-position bottom
 set-option -g status-interval 1
