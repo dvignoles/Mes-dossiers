@@ -30,6 +30,8 @@ set incsearch
 set hlsearch
 " relative line numbers
 set relativenumber
+" disable left sign column bar
+set signcolumn=no
 
 " set spell spelllang=en_us
 
@@ -46,18 +48,21 @@ endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Binds
 let mapleader = "\<Space>" 
-" toggle nerdtree
-map <C-n> :NERDTreeToggle<CR>
-map <leader>D :r!date<CR>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :GFiles<CR>
 
 " chezmoi auto apply
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
