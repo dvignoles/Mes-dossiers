@@ -101,6 +101,7 @@ bindkey '^ ' autosuggest-accept
 RANGER_LOAD_DEFAULT_RC=FALSE
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
 
 # HELPER FUNCTIONS
 
@@ -173,12 +174,15 @@ if [[ -d ~/.zsh.d ]]; then
     fpath=(~/.zsh.d/ $fpath)
 fi
 
+# COLORS
+
 # wal colorscheme
 if [[ -d ~/.cache/wal ]]
 then
-    (cat ~/.cache/wal/sequences &)
+#    (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors.sh
 fi
+
 
 # >>> conda initialize >>>
 {{- if eq .chezmoi.hostname "dan-PC" }}

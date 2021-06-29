@@ -1,3 +1,5 @@
+XTerm.termName: xterm-256color
+
 XTerm*faceName: JetBrainsMono Nerd Font
 XTerm*faceSize: 11
 

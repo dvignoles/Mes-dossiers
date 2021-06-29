@@ -13,7 +13,6 @@ nitrogen --restore
 
 # pywal 
 [ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
-. ~/.cache/wal/colors.sh
 
 # compositor
 picom -b 
