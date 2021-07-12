@@ -115,6 +115,11 @@ padded_range() {
     seq -f "%0$3g" $1 $2 
 }
 
+# move all to subdirectory in current directory
+mv_tosub() {
+    ls | grep -v "$1" | xargs mv -t "$1"
+}
+
 # Time zsh load 
 #https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load.html#how-to-test-your-shell-load-time
 
