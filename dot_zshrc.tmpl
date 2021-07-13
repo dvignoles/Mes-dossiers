@@ -140,6 +140,33 @@ timezshplugins() {
         echo $elapsed":" $plugin
     done
 }
+
+# Pi Cluster Helpers
+{{- if eq .chezmoi.group "pi"}}
+function otherpis {
+  grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
+}
+
+function clustercmd {
+  for pi in $(otherpis); do ssh $pi "$@"; done
+  eval $@
+}
+
+function clusterreboot {
+  clustercmd sudo shutdown -r now
+}
+
+function clustershutdown {
+  clustercmd sudo shutdown now
+}
+
+function clusterscp {
+  for pi in $(otherpis); do
+    cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
+  done
+}
+{{- end }}
+
 # export MANPATH="/usr/local/man:$MANPATH"
 export XDG_USER_CONFIG_DIR=~/.config
 export BROWSER='google-chrome-stable'
