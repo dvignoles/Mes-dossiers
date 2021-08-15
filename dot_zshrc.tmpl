@@ -143,6 +143,12 @@ timezshplugins() {
 
 # Pi Cluster Helpers
 {{- if eq .chezmoi.group "pi"}}
+export JAVA_HOME=$(readlink --canonicalize /usr/bin/java | sed "s:bin/java::")
+export HADOOP_HOME=/opt/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin
+
 function otherpis {
   grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
 }
