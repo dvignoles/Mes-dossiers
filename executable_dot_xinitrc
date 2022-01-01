@@ -26,6 +26,12 @@ xmodmap -e 'remove mod4 = Super_L'
 xmodmap -e 'add mod1 = Super_L'
 xmodmap -e 'add mod4 = Alt_L'
 
+# ssh-agent
+eval $(ssh-agent)
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
 # Simple X Hotkey Daemon
 sxhkd &
 
