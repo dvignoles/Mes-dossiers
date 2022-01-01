@@ -2,14 +2,11 @@
 syntax on
 " disable beep for error messages
 set noerrorbells
-" disable tab characters
-set tabstop=4 softtabstop=4
-" number of spaces for each step of (auto)indent
-set shiftwidth=4
-" use appropriate number of spaces to insert tab
-set expandtab
+" tabs
+set ts=4 sw=4
+set smarttab
 " automatic indentation
-set smartindent
+set autoindent
 " line numbers
 set nu
 " Disable line wrapping
@@ -56,7 +53,6 @@ Plug 'dylanaraps/wal.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()

@@ -24,3 +24,12 @@ export PATH=$PATH:~/bin:~/.local/bin
 
 # Source 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Pi Cluster Helpers
+{{- if eq .chezmoi.group "pi"}}
+export JAVA_HOME=$(readlink --canonicalize /usr/bin/java | sed "s:bin/java::")
+export HADOOP_HOME=/opt/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin
+{{- end }}
