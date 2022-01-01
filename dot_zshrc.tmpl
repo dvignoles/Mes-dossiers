@@ -92,7 +92,7 @@ if [ ! -d ~/.fzf ]; then
     ~/.fzf/install
 fi
 
-plugins=(colorize django pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting vi-mode fzf)
+plugins=(colorize pip python safe-paste zsh-completions zsh-autosuggestions zsh-syntax-highlighting vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,7 +111,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
 
 # remove ".<ext>" from filename (not path)
 filename_noext() {
-    echo "$1" | cut -f 1 -d '.'
+    filename=$(basename -- "$1")
+    extension="${filename##*.}"
+    filename="${filename%.*}"
+    echo $filename
 }
 
 # generate sequence of numbers all zero padded
@@ -248,4 +251,4 @@ jupyter_add_external_kernel() {
 }
 
 # remove user@hostname when logged in as self on local machine
-# prompt_context(){}
+prompt_context(){}
