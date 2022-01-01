@@ -32,6 +32,9 @@ set hlsearch
 set relativenumber
 " disable left sign column bar
 set signcolumn=no
+" wildmenu suggestions in vim command mode
+set wildmenu
+set wildmode=longest:full,full
 
 " set spell spelllang=en_us
 
