@@ -8,14 +8,20 @@ export PATH="$PATH:/snap/bin"
 fi
 
 # monitor layout and wallpaper
-~/.screenlayout/danpc.sh 
-nitrogen --restore
+# ~/.screenlayout/danpc.sh 
+# nitrogen --restore
 
 # pywal 
-[ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
+if command -v wal &> /dev/null
+then
+	[ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
+fi
 
 # compositor
-picom -b 
+if command -v picom &> /dev/null
+then 
+	picom -b 
+fi
 
 # Xresources
 xrdb -merge -I$HOME ~/.Xresources
