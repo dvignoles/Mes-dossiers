@@ -8,14 +8,12 @@ export PATH="$PATH:/snap/bin"
 fi
 
 # monitor layout and wallpaper
-# ~/.screenlayout/danpc.sh 
+~/.screenlayout/screenlayout.sh 
 # nitrogen --restore
 
 # pywal 
-if command -v wal &> /dev/null
-then
-	[ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
-fi
+#[ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
+[ -d ~/.cache/wal ] && wal --theme base16-atelier-estuary
 
 # compositor
 if command -v picom &> /dev/null

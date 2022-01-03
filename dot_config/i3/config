@@ -20,9 +20,9 @@ client.placeholder      $bg     $bg     $fg2  $bg       $bg
 client.background       $bg
 
 #TODO TEMPLATE#
-set $mon_R "HDMI-0"
-set $mon_M "DVI-D-0"
-set $mon_L "DP-4" 
+set $mon_R "HDMI-3"
+set $mon_M "DVI-D-1"
+set $mon_L "DP-1" 
 
 bindsym $mod+g mode "mode_gaps_inner"
 bindsym $mod+Shift+g mode "mode_gaps_outer"
@@ -193,11 +193,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#        status_command i3status
-#}
+bar {
+        status_command i3status
+}
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Alt tab
 bindsym $mod+Tab workspace next
