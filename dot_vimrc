@@ -3,10 +3,7 @@ syntax on
 " disable beep for error messages
 set noerrorbells
 " tabs
-set ts=4 sw=4
-set smarttab
-" automatic indentation
-set autoindent
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " line numbers
 set nu
 " Disable line wrapping
@@ -26,7 +23,8 @@ set incsearch
 " highlight all results
 set hlsearch
 " relative line numbers
-set relativenumber
+set relativenumber!
+set number!
 " disable left sign column bar
 set signcolumn=no
 " wildmenu suggestions in vim command mode
@@ -52,10 +50,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vimwiki-sync'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
+
+" vimwiki sync dir
+let g:vimwiki_list = [{'path':'$HOME/vimwiki'}]
 
 " Binds
 let mapleader = "\<Space>" 
