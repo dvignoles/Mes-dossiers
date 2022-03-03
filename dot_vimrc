@@ -3,7 +3,7 @@ syntax on
 " disable beep for error messages
 set noerrorbells
 " tabs
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
 " line numbers
 set nu
 " Disable line wrapping
@@ -37,6 +37,9 @@ set wildmode=longest:full,full
 set nocompatible
 filetype plugin on
 
+" python pep8 index prereq
+filetype indent on
+
 " retrieve vimplug automatically
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -51,6 +54,8 @@ Plug 'dylanaraps/wal.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vimwiki-sync'
+Plug 'tpope/vim-commentary'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
