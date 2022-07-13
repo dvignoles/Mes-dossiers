@@ -171,8 +171,20 @@ function clustershutdown {
 
 function clusterscp {
   for pi in $(otherpis); do
+    echo "${pi} copying..."
     cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
   done
+  echo "all files copied successfully"
+}
+
+#   start yarn and dfs on cluster
+function cluster-start-hadoop {
+    start-dfs.sh; start-yarn.sh
+}
+
+#   stop yarn and dfs on cluster
+function cluster-stop-hadoop {
+    stop-dfs.sh; stop-yarn.sh
 }
 {{- end }}
 
