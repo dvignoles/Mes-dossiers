@@ -263,5 +263,7 @@ jupyter_add_external_kernel() {
     conda deactivate
 }
 
+{{- if eq .chezmoi.hostname "dan-PC" }}
 # remove user@hostname when logged in as self on local machine
 prompt_context(){}
+{{- end }}
