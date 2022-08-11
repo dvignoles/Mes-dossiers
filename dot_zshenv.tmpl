@@ -42,3 +42,8 @@ if [[ -d "/usr/local/share/ghaas" ]]; then
     export GHAASDIR="/usr/local/share/ghaas"
     export PATH="$PATH:/usr/local/share/ghaas/bin:/usr/local/share/ghaas/f"
 fi 
+
+# PI Cluster
+{{- if eq .chezmoi.group "pi"}}
+    export KUBECONFIG=~/.kube/config
+{{- end }}
