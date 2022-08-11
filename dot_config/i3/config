@@ -10,6 +10,23 @@ set_from_resource $bg i3wm.color6 #f0f0f0
 set_from_resource $fg2 i3wm.color15 #f0f0f0
 set_from_resource $bg2 i3wm.color6 #f0f0f0
 
+set_from_resource $color0 i3wm.color0 #f0f0f0
+set_from_resource $color1 i3wm.color1 #f0f0f0
+set_from_resource $color2 i3wm.color2 #f0f0f0
+set_from_resource $color3 i3wm.color3 #f0f0f0
+set_from_resource $color4 i3wm.color4 #f0f0f0
+set_from_resource $color5 i3wm.color5 #f0f0f0
+set_from_resource $color6 i3wm.color6 #f0f0f0
+set_from_resource $color7 i3wm.color7 #f0f0f0
+set_from_resource $color8 i3wm.color8 #f0f0f0
+set_from_resource $color9 i3wm.color9 #f0f0f0
+set_from_resource $color10 i3wm.color10 #f0f0f0
+set_from_resource $color11 i3wm.color11 #f0f0f0
+set_from_resource $color12 i3wm.color12 #f0f0f0
+set_from_resource $color13 i3wm.color13 #f0f0f0
+set_from_resource $color14 i3wm.color14 #f0f0f0
+set_from_resource $color15 i3wm.color15 #f0f0f0
+
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $fg     $fg2  $bg       $fg
 client.focused_inactive $bg     $bg     $fg2  $bg       $bg
@@ -20,9 +37,9 @@ client.placeholder      $bg     $bg     $fg2  $bg       $bg
 client.background       $bg
 
 #TODO TEMPLATE#
-set $mon_R "HDMI-3"
-set $mon_M "DVI-D-1"
-set $mon_L "DP-1" 
+set $mon_R "HDMI-0"
+set $mon_M "DVI-D-0"
+set $mon_L "DP-4" 
 
 bindsym $mod+g mode "mode_gaps_inner"
 bindsym $mod+Shift+g mode "mode_gaps_outer"
@@ -191,9 +208,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# status bar
 bar {
+        colors {
+        background $color0
+        statusline $fg2
+        separator $color15
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f $color1 $fg2
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspace       #2f343f #ebcb8b #2f343f
+    }
         status_command i3status
 }
 

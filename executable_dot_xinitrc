@@ -9,7 +9,7 @@ fi
 
 # monitor layout and wallpaper
 ~/.screenlayout/screenlayout.sh 
-# nitrogen --restore
+nitrogen --restore
 
 # pywal 
 #[ -d ~/.cache/wal ] && wal -R && . ~/.cache/wal/colors.sh
