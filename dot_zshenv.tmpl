@@ -11,6 +11,12 @@ export GPKGARCHIVE="$GHAAS/GPKGarchive"
 export GEOSERVER="$DV/geoserver"
 export GEOSERVERVOL="$DV/geoserver_volumes"
 export SCRATCH="/scratch/danielv"
+
+# RGIS installation 
+if [[ -d "/usr/local/share/ghaas" ]]; then
+    export GHAASDIR="/usr/local/share/ghaas"
+    export PATH="$PATH:/usr/local/share/ghaas/bin:/usr/local/share/ghaas/f"
+fi 
 {{- end }}
 
 # PATH
@@ -36,12 +42,6 @@ then
     export GEM_HOME="$HOME/gems" 
     export PATH="$HOME/gems/bin:$PATH" 
 fi
-
-# RGIS installation 
-if [[ -d "/usr/local/share/ghaas" ]]; then
-    export GHAASDIR="/usr/local/share/ghaas"
-    export PATH="$PATH:/usr/local/share/ghaas/bin:/usr/local/share/ghaas/f"
-fi 
 
 # PI Cluster
 {{- if eq .chezmoi.group "pi"}}

@@ -1,5 +1,4 @@
 # global aliases
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias chezmoi='~/bin/chezmoi'
 alias vi='vim'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
@@ -9,6 +8,7 @@ alias spt='spotifyd;spt'
 alias pwdf='readlink -f'
 alias sshsha='ssh-add -l -E sha256'
 alias k='kubectl'
+alias wm_class='xprop |awk "/WM_CLASS/{print $4}"'
 
 {{- if eq .chezmoi.group "ecr"}}
 # asrc server aliases
@@ -17,12 +17,7 @@ alias fabio='cd /asrc/ecr/fabio'
 alias balazs='cd /asrc/ecr/balazs'
 alias dbxcli='/asrc/ecr/danielv/go/bin/dbxcli'
 {{- end }}
-{{- if eq .chezmoi.hostname "dan-PC" }}
-# local pc only aliases
-alias i3conf='vim ~/.config/i3/config'
-alias bsconf='vim ~/.config/bspwm/bspwmrc'
-alias aur='cd ~/Downloads/aur'
-alias wm_class='xprop |awk "/WM_CLASS/{print $4}"'
+{{- if .personal }}
 # work vpn
 # https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux/use-the-globalprotect-app-for-linux.html
 alias gpc='globalprotect connect --portal rmasrc.gc.cuny.edu'

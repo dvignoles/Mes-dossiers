@@ -1,4 +1,9 @@
 README.md
-{{- if ne .chezmoi.hostname "dan-PC" }}
+{{- if not .personal }}
 .config/spotifyd
+.ssh/id_rsa.danielv
+.ssh/id_rsa
+.ssh/id_rsa.pub
+.ssh/id_ed25519.gc
+.ssh/id_ed25519.gc.pub
 {{- end }}
