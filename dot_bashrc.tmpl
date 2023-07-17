@@ -25,11 +25,30 @@ export PATH=$PATH:~/bin:~/.local/bin
 # Source 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Pi Cluster Helpers
 {{- if eq .chezmoi.group "pi"}}
+# Pi Cluster Helpers
 export JAVA_HOME=$(readlink --canonicalize /usr/bin/java | sed "s:bin/java::")
 export HADOOP_HOME=/opt/hadoop
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 export SPARK_HOME=/opt/spark
 export PATH=$PATH:$SPARK_HOME/bin
 {{- end }}
+
+if [[ -d ~/mambaforge ]]; then
+
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('${HOME}/mambaforge/bin/conda' 'shell.bash' 'hook'
+	if [ $? -eq 0 ]; then
+		eval "$__conda_setup"
+	else
+		if [ -f "${HOME}/mambaforge/etc/profile.d/conda.sh" ]; then
+			. "${HOME}/mambaforge/etc/profile.d/conda.sh"
+		else
+			export PATH="${HOME}/mambaforge/bin:$PATH"
+		fi
+	fi
+	unset __conda_setup
+	# >>> conda initialize >>>
+
+fi

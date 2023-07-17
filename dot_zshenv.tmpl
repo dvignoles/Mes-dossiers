@@ -36,6 +36,10 @@ if [[ -d /usr/local/go/bin ]]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 
+if [[ -d /opt/mssql-tools18/bin ]]; then
+    export PATH=$PATH:/opt/mssql-tools18/bin
+fi
+
 # Ruby 
 if command -v ruby &> /dev/null
 then
@@ -46,4 +50,32 @@ fi
 # PI Cluster
 {{- if eq .chezmoi.group "pi"}}
     export KUBECONFIG=~/.kube/config
+{{- end }}
+
+if [[ -d ~/mambaforge ]]; then
+
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('${HOME}/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "${HOME}/mambaforge/etc/profile.d/conda.sh" ]; then
+            . "${HOME}/mambaforge/etc/profile.d/conda.sh"
+        else
+            export PATH="${HOME}/mambaforge/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # >>> conda initialize >>>
+
+  if [ -f "${HOME}/mambaforge/etc/profile.d/mamba.sh" ]; then
+     . "${HOME}/mambaforge/etc/profile.d/mamba.sh"
+  fi
+
+fi
+ 
+{{- if .work }}
+# chezmoi lastpass managed "DSNY_bitbucket_app_password"
+BITBUCKET_PASSWORD={{ (index (lastpass "DSNY_bitbucket_app_password") 0).password | quote }}
 {{- end }}

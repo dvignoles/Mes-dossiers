@@ -88,6 +88,13 @@ if [ ! -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ] ; then
 fi 
 
 if [ ! -d ~/.fzf ]; then 
+    
+    # ensure latest version
+    if command -v fzf &> /dev/null
+    then
+        sudo apt remove -y fzf
+    fi
+
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
 fi
@@ -234,13 +241,6 @@ if [[ -d ~/.cache/wal ]]
 then
 #    (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors.sh
-fi
-
-# CONDA 
-if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "$HOME/miniconda3/etc/profile.d/conda.sh"
-#else
-#    export PATH="$HOME/miniconda3/bin:$PATH"
 fi
 
 # Install a local jupyter kernel $1 named $2
