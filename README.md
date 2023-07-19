@@ -14,5 +14,8 @@ sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply dvignoles/mes-dossiers
     work = false
     personal = false
     git_username = "dvignoles"
+    dual_monitor = false
+    monitor_1 = "Virtual1"
+    monitor_2 = "Virtual2"
 
 ```
