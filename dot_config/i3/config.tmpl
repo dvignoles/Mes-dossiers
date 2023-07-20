@@ -1,5 +1,6 @@
 # i3 config file 
-# All non-i3 specific bindings are handled by sxhkd in .config/sxhkd/sxhkdrc 
+
+exec_always --no-startup-id ~/.config/i3/startup.sh
 
 set $mod Mod4
 font pango:JetBrainsMono Nerd Font 11
@@ -37,6 +38,9 @@ client.placeholder      $bg     $bg     $fg2  $bg       $bg
 client.background       $bg
 
 bindsym $mod+Return exec xterm
+bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+Shift+d exec dmenu_run
+
 
 #TODO TEMPLATE#
 {{ if .dual_monitor }}
@@ -70,34 +74,33 @@ workspace 10 output $mon_1
 {{ end }}
 
 # Gaps
-
+# Natively supported in i3 >= 4.22
 # disable title bars (required for gaps to work)
-for_window [class=".*"] border pixel 3
-
-gaps inner 10
-
-mode "mode_gaps_inner" {
-        bindsym Shift+plus  gaps inner current plus 5
-        bindsym Shift+minus gaps inner current minus 5
-        bindsym Shift+0     gaps inner current set 0
-
-        bindsym plus  gaps inner all plus 5
-        bindsym minus gaps inner all minus 5
-        bindsym 0     gaps inner all set 0
-
-        bindsym Escape mode "default"
-}
-mode "mode_gaps_outer" {
-        bindsym Shift+plus  gaps outer current plus 5
-        bindsym Shift+minus gaps outer current minus 5
-        bindsym Shift+0     gaps outer current set 0
-
-        bindsym plus  gaps outer all plus 5
-        bindsym minus gaps outer all minus 5
-        bindsym 0     gaps outer all set 0
-
-        bindsym Escape mode "default"
-}
+#for_window [class=".*"] border pixel 3
+#
+#gaps inner 10
+#mode "mode_gaps_inner" {
+#        bindsym Shift+plus  gaps inner current plus 5
+#        bindsym Shift+minus gaps inner current minus 5
+#        bindsym Shift+0     gaps inner current set 0
+#
+#        bindsym plus  gaps inner all plus 5
+#        bindsym minus gaps inner all minus 5
+#        bindsym 0     gaps inner all set 0
+#
+#        bindsym Escape mode "default"
+#}
+#mode "mode_gaps_outer" {
+#        bindsym Shift+plus  gaps outer current plus 5
+#        bindsym Shift+minus gaps outer current minus 5
+#        bindsym Shift+0     gaps outer current set 0
+#
+#        bindsym plus  gaps outer all plus 5
+#        bindsym minus gaps outer all minus 5
+#        bindsym 0     gaps outer all set 0
+#
+#        bindsym Escape mode "default"
+#}
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position

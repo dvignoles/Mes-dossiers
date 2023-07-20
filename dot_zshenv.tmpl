@@ -36,6 +36,10 @@ if [[ -d /usr/local/go/bin ]]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 
+if [[ -d "/snap/bin" ]] ; then
+    export PATH="$PATH:/snap/bin"
+fi
+
 # Ruby 
 if command -v ruby &> /dev/null
 then
