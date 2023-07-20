@@ -4,7 +4,7 @@ syntax on
 set noerrorbells
 " tabs
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
-" line numbers
+
 set nu
 " Disable line wrapping
 set nowrap
@@ -53,7 +53,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
-Plug 'michal-h21/vimwiki-sync'
 Plug 'tpope/vim-commentary'
 Plug 'Vimjas/vim-python-pep8-indent'
 

@@ -5,9 +5,9 @@
 mod4 + Escape
 	pkill -USR1 -x sxhkd
 
-# terminal emulator
-mod4 + Return
-    xterm
+## terminal emulator
+#mod4 + Return
+#    xterm
 
 # lockscreen
 mod4 + alt + ctrl + l
@@ -23,15 +23,15 @@ mod4 + alt + ctrl + l
 #super + d
 #	rofi -modi drun -show drun
 
-mod4 + d
-    i3-dmenu-desktop
-
-# launch any program
-#super + shift + d
-#	rofi -modi run  -show run
-
-mod4 + shift + d
-    dmenu_run
+#mod4 + d
+#    i3-dmenu-desktop
+#
+## launch any program
+##super + shift + d
+##	rofi -modi run  -show run
+#
+#mod4 + shift + d
+#    dmenu_run
 #-nb "$color7" -nf "$color0" -sb "$color0" -sf "$color7"
 
 # power menu

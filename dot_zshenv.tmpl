@@ -40,6 +40,10 @@ if [[ -d /opt/mssql-tools18/bin ]]; then
     export PATH=$PATH:/opt/mssql-tools18/bin
 fi
 
+if [[ -d "/snap/bin" ]] ; then
+    export PATH="$PATH:/snap/bin"
+fi
+
 # Ruby 
 if command -v ruby &> /dev/null
 then
