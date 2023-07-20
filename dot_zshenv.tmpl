@@ -82,4 +82,5 @@ fi
 {{- if .work }}
 # chezmoi lastpass managed "DSNY_bitbucket_app_password"
 BITBUCKET_PASSWORD={{ (index (lastpass "DSNY_bitbucket_app_password") 0).password | quote }}
+GITHUB_PASSWORD={{ (index (lastpass "DSNY_github_pat") 0).password | quote }}
 {{- end }}
