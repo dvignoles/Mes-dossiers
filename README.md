@@ -17,5 +17,5 @@ sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply dvignoles/mes-dossiers
     dual_monitor = false
     monitor_1 = "Virtual1"
     monitor_2 = "Virtual2"
-
+    include_secrets = false
 ```
