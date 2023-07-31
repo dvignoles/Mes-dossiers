@@ -9,6 +9,7 @@ alias pwdf='readlink -f'
 alias sshsha='ssh-add -l -E sha256'
 alias k='kubectl'
 alias wm_class='xprop |awk "/WM_CLASS/{print $4}"'
+alias showip='nmcli -p device show'
 
 {{- if eq .chezmoi.group "ecr"}}
 # asrc server aliases

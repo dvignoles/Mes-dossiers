@@ -6,4 +6,6 @@ README.md
 .ssh/id_rsa.pub
 .ssh/id_ed25519.gc
 .ssh/id_ed25519.gc.pub
+.ssh/github.ed25519
+.ssh/github.ed25519.pub
 {{- end }}
