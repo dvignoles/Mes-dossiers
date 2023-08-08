@@ -87,3 +87,5 @@ BITBUCKET_PASSWORD={{ (index (lastpass "DSNY_bitbucket_app_password") 0).passwor
 GITHUB_PASSWORD={{ (index (lastpass "DSNY_github_pat") 0).password | quote }}
 {{- end }}
 {{- end }}
+
+GCM_CREDENTIAL_STORE=cache
