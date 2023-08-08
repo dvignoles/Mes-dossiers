@@ -79,8 +79,11 @@ if [[ -d ~/mambaforge ]]; then
 
 fi
  
-{{- if (and .work .include_secrets) }}
+{{- if .work }}
+{{- if .include_secrets }}
+DOCKER_REGISTRY={{ (index (lastpassRaw "DSNY_docker_registry") 0).note | quote }}
 # chezmoi lastpass managed "DSNY_bitbucket_app_password"
 BITBUCKET_PASSWORD={{ (index (lastpass "DSNY_bitbucket_app_password") 0).password | quote }}
 GITHUB_PASSWORD={{ (index (lastpass "DSNY_github_pat") 0).password | quote }}
+{{- end }}
 {{- end }}
