@@ -19,3 +19,13 @@ sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply dvignoles/mes-dossiers
     monitor_2 = "Virtual2"
     include_secrets = false
 ```
+
+## Templating
+
+https://www.chezmoi.io/user-guide/templating/#helper-functions
+
+https://pkg.go.dev/text/template
+
+http://masterminds.github.io/sprig/
+
+

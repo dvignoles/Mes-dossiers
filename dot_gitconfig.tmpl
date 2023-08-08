@@ -2,3 +2,9 @@
 	email = {{ .email | quote }}
 	name = Daniel Vignoles
 	username = {{ .git_username | quote }}
+[credential]
+	helper = /usr/local/bin/git-credential-manager
+{{- if .work }}
+[http]
+	proxy = http://dvignoles:{{ (index (lastpass "DSNY_AD") 0).password | urlquery }}@bcpxy.nycnet:8080
+{{- end}}
