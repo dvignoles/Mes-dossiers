@@ -8,3 +8,5 @@
 [http]
 	proxy = http://dvignoles:{{ (index (lastpass "DSNY_AD") 0).password | urlquery }}@bcpxy.nycnet:8080
 {{- end}}
+[credential]
+    credentialStore = gpg
