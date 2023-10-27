@@ -267,7 +267,35 @@ jupyter_add_external_kernel() {
     conda deactivate
 }
 
+# copy docker image over ssh and load on other host
+
+dockerimagescp(){
+    if command -v pv &> /dev/null
+    then
+        docker save "${1}" | gzip -c | pv | ssh $2 'gunzip -c | docker load'
+    else
+        docker save "${1}" | gzip -c | ssh $2 'gunzip -c | docker load'
+    fi
+}
+
 {{- if eq .chezmoi.hostname "dan-PC" }}
 # remove user@hostname when logged in as self on local machine
 prompt_context(){}
+{{- end }}
+
+{{- if .work }}
+
+if [ -f ~/.dsny ]; then
+	. ~/.dsny
+fi
+
+# duplicate mongo collection in same database
+# $1 : host:port
+# $2 : target database
+# $3 : source collection name
+# $4$ : new collection name
+
+mongo_duplicate_collection(){
+    mongodump --host="${1}"  --db="${2}" --collection="${3}" --archive=- | mongorestore --host="${1}" --nsFrom="${2}.${3}" --nsTo="${2}.${4}" --archive=-
+}
 {{- end }}

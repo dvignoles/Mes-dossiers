@@ -10,10 +10,10 @@ alias sshsha='ssh-add -l -E sha256'
 alias k='kubectl'
 alias wm_class='xprop |awk "/WM_CLASS/{print $4}"'
 alias showip='nmcli -p device show'
-alias meminfo=`free -mt`
-alias memprocinfo=`egrep --color 'Mem|Cache|Swap' /proc/meminfo`
-#alias cpuinfo=`cat /proc/cpuinfo`
-#alias lscpu=`lscpu`
+alias meminfo='free -mt'
+alias memprocinfo='egrep --color "Mem|Cache|Swap" /proc/meminfo'
+alias cpuinfo='cat /proc/cpuinfo'
+alias lscpu='lscpu'
 
 {{- if eq .chezmoi.group "ecr"}}
 # asrc server aliases
