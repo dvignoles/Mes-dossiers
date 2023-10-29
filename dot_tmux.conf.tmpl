@@ -1,4 +1,7 @@
 set -g default-shell /bin/zsh
+set -g default-terminal "xterm-256color"
+# enable true color suppport (Tc)
+set -ga terminal-overrides ",xterm-256color:Tc"
 
 # use C-a, since it's on the home row and easier to hit than C-b
 set-option -g prefix C-a
